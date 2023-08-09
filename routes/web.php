@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +17,11 @@ use App\Http\Controllers\Controller;
 
 Route::get('/', [Controller::class, 'homepage']);
 Route::get('/register', [Controller::class, 'register']);
-Route::get('/login', [Controller::class, 'login']);
 
+/**
+ *Routes to user auth
+ */
+
+Route::get('/login', [Controller::class, 'login']);
+Route::post('/login', [DashboardController::class, 'auth'])->name('user.login');
+Route::post('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');

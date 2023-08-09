@@ -14,20 +14,25 @@ class Controller extends BaseController
     public function homepage()
     {
         $title = "Home";
-        return view('welcome', 
-        [
-            'title' => $title
-        ]);
+        return view(
+            'welcome',
+            [
+                'title' => $title
+            ]
+        );
     }
-    
+
     public function register()
     {
         echo "register";
     }
 
+    /**
+     *Methos to user login View
+     */
     public function login()
     {
+        return view('user.login');
         echo "login";
     }
-
 }
