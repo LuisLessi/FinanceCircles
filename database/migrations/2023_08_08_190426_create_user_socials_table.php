@@ -25,7 +25,9 @@ class CreateUserSocialsTable extends Migration
             $table->timestamps();
        
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('social_email')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('social_email')->references('email')->on('users')->onDelete('cascade');
+
+
 
         });
     }
