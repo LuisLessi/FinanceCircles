@@ -21,8 +21,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        echo "dashboard";
-    }   
+        return view('user.dashboard');
+    }
 
     public function auth(Request $request)
     {
@@ -32,14 +32,24 @@ class DashboardController extends Controller
         ];
 
         try {
-            if (Auth::attempt($data, false)) {
-                return redirect()->route('user.dashboard');
+            if (env('PASSWORD_HASH')) {
+                Auth::attempt($data, false);
             } else {
-                return redirect()->route('user.login');
+                $user = $this->repository->findWhere(['email' => $request->get('username')])->first();
+
+                if (!$user) {
+                    throw new Exception("email invalid");
+                }
+
+                if ($user->password != $request->get('password')) {
+                    throw new Exception("password invalid");
+                }
+
+                Auth::login($user);
+                return redirect()->route('user.dashboard');
             }
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
-
 }
