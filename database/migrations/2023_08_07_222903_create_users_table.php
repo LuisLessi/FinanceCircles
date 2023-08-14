@@ -16,16 +16,16 @@ return new class extends Migration
             //People data
 			$table->increments('id');
 			
-			$table->char('cpf', 11)->unique()->nullable();
-			$table->string('name', 100);
+			$table->char('cpf', 140)->unique()->nullable();
+			$table->string('name', 100)->nullable();
 			$table->char('phone', 11);
-			$table->date('birth', 11);
-			$table->char('gender', 1);
+			$table->date('birth')->nullable();
+			$table->char('gender', 1)->nullable();
 			$table->text('notes')->nullable();
 			
 			//Auth data
 			$table->string('email', 100)->unique();
-			$table->string('password', 254)->nullable();
+			$table->string('password', 254);
 
 			//Permission data
 			$table->string('status')->default('active');

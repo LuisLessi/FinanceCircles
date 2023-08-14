@@ -30,7 +30,7 @@ class User extends Authenticatable
         'status',
         'permission',
     ];
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -54,5 +54,35 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
+    }
+
+    public function getCpfAttribute()
+    {
+        $cpf = $this->attributes['cpf'];
+        return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 7, 3) . '-' . substr($cpf, -2);
+    }
+
+    public function getPhoneAttribute($value)
+    {
+        if ($value) {
+            $numericValue = preg_replace('/[^0-9]/', '', $value);
+
+            if (strlen($numericValue) === 10) {
+                return '(' . substr($numericValue, 0, 2) . ') ' . substr($numericValue, 2, 5) . '-' . substr($numericValue, 7);
+            } elseif (strlen($numericValue) === 11) {
+                return '(' . substr($numericValue, 0, 2) . ') ' . substr($numericValue, 2, 5) . '-' . substr($numericValue, 7);
+            }
+        }
+
+        return $value; 
+    }
+
+    public function getBirthAttribute($value)
+    {
+        if ($value) {
+            return date('Y/m/d', strtotime($value));
+        }
+
+        return $value; 
     }
 }
