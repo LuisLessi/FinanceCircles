@@ -4,21 +4,13 @@
 @endsection
 
 @section('script-view')
-<script>
-    $(document).ready(function() {
-        $('#cpf').mask('000.000.000-00', {
-            reverse: true
-        });
-        $('#phone').mask('(00) 00000-0000');
-    });
-</script>
 @endsection
 
 
 @section('content-view')
 
 @if(session('success'))
-<h3 class="mb-5">{{ session('success')['messages'] }}</h3>
+<h3 class="message">{{ session('success')['messages'] }}</h3>
 @endif
 
 {!! Form::open(['route' => 'user.store', 'method' => 'post', 'class' => 'form-padrao']) !!}
@@ -43,7 +35,7 @@
             <td>Email</td>
             <td>Status</td>
             <td>Permission</td>
-            <td>Menu</td>
+            <td>Options</td>
         </tr>
     </thead>
     <tbody>
@@ -59,7 +51,7 @@
             <td>{{$user->permission}}</td>
             <td>
                 {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'delete']) !!}
-                {!! Form::submit('Remove') !!}
+                {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
             </td>
         </tr>

@@ -74,6 +74,7 @@ section#conteudo-view form label input {
     border: 2px solid #52ca9b;
     color: #959595;
     font: 1em 'Arial';
+    margin-top: 20px;
 }
 
 section#conteudo-view form input[type="submit"] {
@@ -201,6 +202,17 @@ form.form-padrao label input {
 form.form-padrao label.submit{
     background: #0ad181;
     border-color: #0aaa67;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.submit{
+    cursor: pointer;
+}
+
+form.form-padrao label.submit:hover{
+    background-color: #0ad181b3;
 }
 
 form.form-padrao label.submit input{
@@ -232,4 +244,23 @@ form.form-padrao label.submit input{
 
 .default-table tbody{
     height: 60px;
+}
+
+.message{
+    margin-bottom: 20px;
+}
+
+.delete-button {
+    background-color: #0ad181;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #0ad181b3; 
 }

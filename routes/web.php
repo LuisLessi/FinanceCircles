@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\InstitutionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,5 +29,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dash
 
 
 Route::get('user', [UsersController::class, 'index'])->name('user.index');
+Route::get('institution', [InstitutionsController::class, 'index'])->name('institution.index');
 
 Route::resource('user', UsersController::class);
+Route::resource('institution', InstitutionsController::class); 
