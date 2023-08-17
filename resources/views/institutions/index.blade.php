@@ -28,7 +28,7 @@
             <td>Options</td>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="options-cell">
         @foreach($institutions as $institution)
         <tr>
             <td>{{$institution->id}}</td>
@@ -37,6 +37,9 @@
                 {!! Form::open(['route' => ['institution.destroy', $institution->id], 'method' => 'delete']) !!}
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
+                <br>
+                <a href="{{ route('institution.show', $institution->id) }}"
+                class="details-button">Details</a>
             </td>
         </tr>
         @endforeach

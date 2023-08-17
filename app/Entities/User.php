@@ -56,14 +56,16 @@ class User extends Authenticatable
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
     }
 
-    public function getCpfAttribute()
+    public function getFormattedCpfAttribute()
     {
         $cpf = $this->attributes['cpf'];
         return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 7, 3) . '-' . substr($cpf, -2);
     }
 
-    public function getPhoneAttribute($value)
+    public function getFormattedPhoneAttribute($value)
     {
+        $value = $this->attributes['phone'];
+
         if ($value) {
             $numericValue = preg_replace('/[^0-9]/', '', $value);
 
@@ -77,8 +79,10 @@ class User extends Authenticatable
         return $value; 
     }
 
-    public function getBirthAttribute($value)
+    public function getFormattedBirthAttribute($value)
     {
+        $value = $this->attributes['birth'];
+
         if ($value) {
             return date('Y/m/d', strtotime($value));
         }

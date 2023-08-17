@@ -15,6 +15,12 @@ use App\Validators\UserValidator;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
+
+    public function selectBoxList(string $descricao = 'name', string $chave = 'id')
+    {
+        return $this->model->pluck($descricao, $chave);
+    }
+
     /**
      * Specify Model class name
      *
@@ -26,10 +32,10 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     }
 
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
@@ -44,5 +50,4 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }

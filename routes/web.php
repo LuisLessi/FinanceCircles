@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\InstitutionsController;
 /*
@@ -30,6 +31,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dash
 
 Route::get('user', [UsersController::class, 'index'])->name('user.index');
 Route::get('institution', [InstitutionsController::class, 'index'])->name('institution.index');
+Route::get('group', [GroupsController::class, 'index'])->name('group.index');
+
 
 Route::resource('user', UsersController::class);
 Route::resource('institution', InstitutionsController::class); 
+Route::resource('group', GroupsController::class); 

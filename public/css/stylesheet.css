@@ -243,7 +243,7 @@ form.form-padrao label.submit input{
 }
 
 .default-table tbody{
-    height: 60px;
+    height: 190px;
 }
 
 .message{
@@ -251,7 +251,7 @@ form.form-padrao label.submit input{
 }
 
 .delete-button {
-    background-color: #0ad181;
+    background-color: #e74c3c;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -262,5 +262,21 @@ form.form-padrao label.submit input{
 }
 
 .delete-button:hover {
+    background-color: #e74c3cb3; 
+}
+
+.details-button{
+    background-color: #0ad181;
+    text-decoration: none;
+    color: white;
+    padding: 10px 24.5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
     background-color: #0ad181b3; 
 }
