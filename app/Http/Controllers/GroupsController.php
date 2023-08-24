@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\GroupCreateRequest;
@@ -11,7 +13,6 @@ use App\Repositories\InstitutionRepository;
 use App\Repositories\UserRepository;
 use App\Validators\GroupValidator;
 use App\Services\GroupService;
-
 
 /**
  * Class GroupsController.
@@ -82,6 +83,18 @@ class GroupsController extends Controller
     }
 
 
+    public function userStore(Request $request, $group_id)
+    {
+        $request = $this->service->userStore($group_id, $request->all());
+
+        session()->flash('success', [
+            'success'  => $request['success'],
+            'messages' => $request['messages']
+        ]);
+
+        return view('groups.show', [$group_id]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -92,15 +105,12 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = $this->repository->find($id);
+        $user_list = $this->userRepository->selectBoxList();
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $group,
-            ]);
-        }
-
-        return view('groups.show', compact('group'));
+        return view('groups.show', [
+            'group' => $group,
+            'user_list' => $user_list,
+        ]);
     }
 
     /**

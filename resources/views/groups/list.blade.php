@@ -17,6 +17,8 @@
                 {!! Form::open(['route' => ['group.destroy', $group->id], 'method' => 'delete']) !!}
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
+                <br>
+            <a href="{{ route('group.show', $group->id) }}" class="details-button">Details</a>
             </td>
         </tr>
         @endforeach

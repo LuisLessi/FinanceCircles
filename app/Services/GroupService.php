@@ -47,6 +47,38 @@ class GroupService
         }
     }
 
+    public function userStore($group_id, $data)
+    {
+        try{
+            $group   = $this->repository->find($group_id);
+            $user_id = $data['user_id'];
+
+            $group->users()->attach($user_id);
+
+            return [
+                'success' => true,
+                'messages' => "Registered user in group",
+                'data' => null,
+            ];
+        }catch(Exception $e){
+            switch (get_class($e)) {
+                case QueryException::class:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+                case ValidationException::class:
+                    return ['success' => false, 'messages' => $e->getMessageBag()];
+                case Exception::class:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+                default:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+            }
+            return [
+                'success' => false,
+                'messages' => "Error registering user",
+                'data' => $e->getMessage(),
+            ];
+        }
+    }
+
     public function update(){}
     public function delete($group_id)
     {
