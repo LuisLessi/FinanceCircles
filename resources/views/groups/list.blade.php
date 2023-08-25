@@ -12,7 +12,7 @@
         <tr>
             <td>{{$group->name}}</td>
             <td>{{$group->institution->name}}</td>
-            <td>{{$group->user->name}}</td>
+            <td>{{$group->user->name}}</td> 
             <td>
                 {!! Form::open(['route' => ['group.destroy', $group->id], 'method' => 'delete']) !!}
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}

@@ -86,13 +86,15 @@ class GroupsController extends Controller
     public function userStore(Request $request, $group_id)
     {
         $request = $this->service->userStore($group_id, $request->all());
-
+        
         session()->flash('success', [
             'success'  => $request['success'],
             'messages' => $request['messages']
         ]);
 
-        return view('groups.show', [$group_id]);
+
+        return redirect()->route('group.show', $group_id);
+
     }
 
     /**
@@ -187,6 +189,6 @@ class GroupsController extends Controller
             'messages' => $request['messages']
         ]);
 
-        return redirect()->route('group.index');
+        return redirect()->route('groups.index');
     }
 }
