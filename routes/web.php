@@ -39,3 +39,4 @@ Route::resource('institution', InstitutionsController::class);
 Route::resource('group', GroupsController::class); 
 
 Route::post('group/{group_id}/user', [GroupsController::class, 'userStore'])->name('group.user.store');
+

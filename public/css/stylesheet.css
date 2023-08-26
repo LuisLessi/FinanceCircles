@@ -280,3 +280,19 @@ form.form-padrao label.submit input{
 .details-button:hover {
     background-color: #0ad181b3; 
 }
+
+.edit-button{
+    background-color: #0ad181;
+    text-decoration: none;
+    color: white;
+    padding: 10px 34.5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #0ad181b3; 
+}
