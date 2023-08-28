@@ -40,6 +40,9 @@
                 <br>
                 <a href="{{ route('institution.show', $institution->id) }}"
                 class="details-button">Details</a>
+                
+                <a href="{{ route('institution.edit', $institution->id) }}"
+                class="edit-button">Edit</a>
             </td>
         </tr>
         @endforeach

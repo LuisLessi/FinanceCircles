@@ -18,7 +18,7 @@
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
                 <br>
-            <a href="{{ route('group.show', $group->id) }}" class="details-button">Details</a>
+            <a href="{{ route('group.show', $group->id) }}" class="details-button-full">Details</a>
             </td>
         </tr>
         @endforeach

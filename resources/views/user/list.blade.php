@@ -35,7 +35,7 @@
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
                 <br>
-                <a href="{{ route('user.edit', $user->id) }}" class="edit-button">Edit</a>
+                <a href="{{ route('user.edit', $user->id) }}" class="edit-button-full">Edit</a>
             </td>
         </tr>
         @endforeach

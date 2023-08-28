@@ -269,7 +269,7 @@ form.form-padrao label.submit input{
     background-color: #0ad181;
     text-decoration: none;
     color: white;
-    padding: 10px 24.5px;
+    padding: 10px 0px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -281,8 +281,41 @@ form.form-padrao label.submit input{
     background-color: #0ad181b3; 
 }
 
-.edit-button{
+.details-button-full{
     background-color: #0ad181;
+    text-decoration: none;
+    color: white;
+    padding: 10px 24.5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button-full:hover {
+    background-color: #0ad181b3; 
+}
+
+.edit-button{
+    background-color: #0a9fd1;
+    text-decoration: none;
+    color: white;
+    padding: 10px 11px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #0a9fd1b3; 
+}
+
+
+.edit-button-full{
+    background-color: #0a9fd1;
     text-decoration: none;
     color: white;
     padding: 10px 34.5px;
@@ -293,6 +326,6 @@ form.form-padrao label.submit input{
     transition: background-color 0.3s ease;
 }
 
-.edit-button:hover {
-    background-color: #0ad181b3; 
+.edit-button-full:hover {
+    background-color: #0a9fd1b3; 
 }

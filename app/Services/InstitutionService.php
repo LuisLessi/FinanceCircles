@@ -18,8 +18,9 @@ class InstitutionService
         $this->validator  = $validator;
     }
 
-    public function store(array $data){
-        try{
+    public function store(array $data)
+    {
+        try {
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $institution = $this->repository->create($data);
 
@@ -28,7 +29,7 @@ class InstitutionService
                 'messages' => "Registered institution",
                 'data' => $institution,
             ];
-        }catch(Exception $e){
+        } catch (Exception $e) {
             switch (get_class($e)) {
                 case QueryException::class:
                     return ['success' => false, 'messages' => $e->getMessage()];
@@ -47,17 +48,45 @@ class InstitutionService
         }
     }
 
-    public function update(){}
+    public function update($data, $id)
+    {
+        try {
+            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $institution = $this->repository->update($data, $id);
+            return [
+                'success' => true,
+                'messages' => "Updated institution",
+                'data' => $institution,
+            ];
+        } catch (Exception $e) {
+            switch (get_class($e)) {
+                case QueryException::class:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+                case ValidationException::class:
+                    return ['success' => false, 'messages' => $e->getMessageBag()];
+                case Exception::class:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+                default:
+                    return ['success' => false, 'messages' => $e->getMessage()];
+            }
+            return [
+                'success' => false,
+                'messages' => "Error registering user",
+                'data' => $e->getMessage(),
+            ];
+        }
+    }
+
     public function delete($institution_id)
     {
-        try{
+        try {
             $institution_id = $this->repository->destroy($institution_id);
             return [
                 'success' => true,
                 'messages' => "Institution_id removed",
                 'data' => $institution_id,
             ];
-        }catch(Exception $e){
+        } catch (Exception $e) {
             switch (get_class($e)) {
                 case QueryException::class:
                     return ['success' => false, 'messages' => $e->getMessage()];
