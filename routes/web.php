@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\InstitutionsController;
+use App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,8 @@ Route::get('group', [GroupsController::class, 'index'])->name('group.index');
 Route::resource('user', UsersController::class);
 Route::resource('institution', InstitutionsController::class); 
 Route::resource('group', GroupsController::class); 
+Route::resource('institution.product', ProductsController::class); 
+
 
 Route::post('group/{group_id}/user', [GroupsController::class, 'userStore'])->name('group.user.store');
 

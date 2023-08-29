@@ -34,15 +34,18 @@
             <td>{{$institution->id}}</td>
             <td>{{$institution->name}}</td>
             <td>
-                {!! Form::open(['route' => ['institution.destroy', $institution->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['institution.destroy', $institution->id], 'method' => 'delete', 'class' => 'inline-form']) !!}
                 {!! Form::submit('Remove', ['class' => 'delete-button']) !!}
                 {!! Form::close() !!}
-                <br>
+                
                 <a href="{{ route('institution.show', $institution->id) }}"
                 class="details-button">Details</a>
                 
                 <a href="{{ route('institution.edit', $institution->id) }}"
                 class="edit-button">Edit</a>
+                
+                <a href="{{ route('institution.product.index', $institution->id) }}"
+                class="product-button">Products</a>
             </td>
         </tr>
         @endforeach
