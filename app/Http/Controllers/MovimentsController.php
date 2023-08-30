@@ -7,36 +7,35 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\ProductCreateRequest;
-use App\Http\Requests\ProductUpdateRequest;
-use App\Repositories\ProductRepository;
-use App\Validators\ProductValidator;
-use App\Entities\Institution;
+use App\Http\Requests\MovimentCreateRequest;
+use App\Http\Requests\MovimentUpdateRequest;
+use App\Repositories\MovimentRepository;
+use App\Validators\MovimentValidator;
 
 /**
- * Class ProductsController.
+ * Class MovimentsController.
  *
  * @package namespace App\Http\Controllers;
  */
-class ProductsController extends Controller
+class MovimentsController extends Controller
 {
     /**
-     * @var ProductRepository
+     * @var MovimentRepository
      */
     protected $repository;
 
     /**
-     * @var ProductValidator
+     * @var MovimentValidator
      */
     protected $validator;
 
     /**
-     * ProductsController constructor.
+     * MovimentsController constructor.
      *
-     * @param ProductRepository $repository
-     * @param ProductValidator $validator
+     * @param MovimentRepository $repository
+     * @param MovimentValidator $validator
      */
-    public function __construct(ProductRepository $repository, ProductValidator $validator)
+    public function __construct(MovimentRepository $repository, MovimentValidator $validator)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
@@ -47,41 +46,56 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($institution_id)
+    public function index()
     {
-        $institution = Institution::find($institution_id);
-    
-        return view('institutions.product.index', [
-            'institution' => $institution,
-        ]);
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $moviments = $this->repository->all();
+
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'data' => $moviments,
+            ]);
+        }
+
+        return view('moviments.index', compact('moviments'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  ProductCreateRequest $request
+     * @param  MovimentCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(Request $request, $institution_id)
+    public function store(MovimentCreateRequest $request)
     {
         try {
 
-            $data = $request->all();
-            $data['institution_id'] = $institution_id;
+            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
-            $product = $this->repository->create($data);
+            $moviment = $this->repository->create($request->all());
 
-            session()->flash('success', [
-                'success'   => true,
-                'messages' => "Registered product"
-            ]);
+            $response = [
+                'message' => 'Moviment created.',
+                'data'    => $moviment->toArray(),
+            ];
 
-            return redirect()->route('institution.product.index', $institution_id);
+            if ($request->wantsJson()) {
+
+                return response()->json($response);
+            }
+
+            return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'error'   => true,
+                    'message' => $e->getMessageBag()
+                ]);
+            }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
@@ -96,16 +110,16 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = $this->repository->find($id);
+        $moviment = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $product,
+                'data' => $moviment,
             ]);
         }
 
-        return view('products.show', compact('product'));
+        return view('moviments.show', compact('moviment'));
     }
 
     /**
@@ -117,32 +131,32 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = $this->repository->find($id);
+        $moviment = $this->repository->find($id);
 
-        return view('products.edit', compact('product'));
+        return view('moviments.edit', compact('moviment'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  ProductUpdateRequest $request
+     * @param  MovimentUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(ProductUpdateRequest $request, $id)
+    public function update(MovimentUpdateRequest $request, $id)
     {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $product = $this->repository->update($request->all(), $id);
+            $moviment = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'Product updated.',
-                'data'    => $product->toArray(),
+                'message' => 'Moviment updated.',
+                'data'    => $moviment->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -177,7 +191,14 @@ class ProductsController extends Controller
     {
         $deleted = $this->repository->delete($id);
 
+        if (request()->wantsJson()) {
 
-        return redirect()->route('institutions.product.index');
+            return response()->json([
+                'message' => 'Moviment deleted.',
+                'deleted' => $deleted,
+            ]);
+        }
+
+        return redirect()->back()->with('message', 'Moviment deleted.');
     }
 }
