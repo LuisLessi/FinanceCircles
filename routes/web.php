@@ -7,6 +7,7 @@ use App\Http\Controllers\GroupsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\InstitutionsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\MovimentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dash
 Route::get('user', [UsersController::class, 'index'])->name('user.index');
 Route::get('institution', [InstitutionsController::class, 'index'])->name('institution.index');
 Route::get('group', [GroupsController::class, 'index'])->name('group.index');
+Route::get('moviment', [MovimentsController::class, 'application'])->name('moviment.application');
 
 
 Route::resource('user', UsersController::class);
