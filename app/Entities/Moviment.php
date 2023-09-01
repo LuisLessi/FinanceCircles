@@ -16,7 +16,7 @@ class Moviment extends Model implements Transformable
     use TransformableTrait;
 
   
-    protected $fillable = ["user_id", "group_id", "institution_id", "product_id", "value", "type"];
+    protected $fillable = ["user_id", "group_id", "product_id", "value", "type"];
 
     public function user()
     {
@@ -26,11 +26,6 @@ class Moviment extends Model implements Transformable
     public function group()
     {
         return $this->belongsTo(Group::class);
-    }
-
-    public function institution()
-    {
-        return $this->belongsTo(Institution::class);
     }
 
     public function product()

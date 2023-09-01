@@ -24,5 +24,11 @@
                 <h3>Invest</h3>
             </a>
         </li>
+        <li>
+            <a href="{{ route('moviment.index') }}">
+                <i class="fa fa-dollar"></i>
+                <h3>Applications</h3>
+            </a>
+        </li>
     </ul>
 </nav>

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->increments('id');
 			$table->unsignedInteger('user_id');
 			$table->unsignedInteger('group_id');
-			$table->unsignedInteger('institution_id');
 			$table->unsignedInteger('product_id');
 			$table->decimal('value');
 			$table->integer('type');

@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <td>Group Name</td>
+            <td>Value</td>
             <td>Institution</td>
             <td>User Adm</td>
             <td>Options</td>
@@ -11,6 +12,7 @@
         @foreach($group_list as $group)
         <tr>
             <td>{{$group->name}}</td>
+            <td>$ {{ number_format($group->totalValue, 2, ',', '.') }}</td>
             <td>{{$group->institution->name}}</td>
             <td>{{$group->user->name}}</td> 
             <td>
