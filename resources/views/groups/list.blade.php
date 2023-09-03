@@ -1,11 +1,11 @@
 <table class="default-table">
     <thead>
         <tr>
-            <td>Group Name</td>
-            <td>Value</td>
-            <td>Institution</td>
-            <td>User Adm</td>
-            <td>Options</td>
+            <th>Group Name</th>
+            <th>Value</th>
+            <th>Institution</th>
+            <th>User Adm</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody>

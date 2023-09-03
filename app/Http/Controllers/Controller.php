@@ -13,18 +13,12 @@ class Controller extends BaseController
 
     public function homepage()
     {
-        $title = "Home";
-        return view(
-            'welcome',
-            [
-                'title' => $title
-            ]
-        );
+        return view('user.login');
     }
 
     public function register()
     {
-        echo "register";
+        return view('user.register');
     }
 
     /**
@@ -35,4 +29,5 @@ class Controller extends BaseController
         return view('user.login');
         echo "login";
     }
+
 }

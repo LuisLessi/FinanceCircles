@@ -1,15 +1,14 @@
 <table class="default-table">
     <thead>
         <tr>
-            <td>#</td>
-            <td>CPF</td>
-            <td>Name</td>
-            <td>Phone</td>
-            <td>Birthdate</td>
-            <td>Email</td>
-            <td>Status</td>
-            <td>Permission</td>
-            <td>Options</td>
+            <th>#</th>
+            <th>CPF</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Permission</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody>
@@ -22,11 +21,9 @@
                 N/A
                 @endif
             </td>
-            <td>{{$user->id}}</td>
             <td>{{$user->Formatted_cpf}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->Formatted_phone}}</td>
-            <td>{{$user->Formatted_birth}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->status}}</td>
             <td>{{$user->permission}}</td>

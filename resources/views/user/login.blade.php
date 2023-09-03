@@ -12,7 +12,6 @@
 <body id="background">
 
     <section id="conteudo-view" class="login">
-
         <h1>FinanceCircles</h1>
         <h3>Your team's finance manager</h3>
 
@@ -20,7 +19,7 @@
         <p>Access the system</p>
 
         <label>
-            {!! Form::text('username', null, ['class' => 'input', 'placeholder' => "Username"]) !!}
+            {!! Form::text('username', null, ['class' => 'input', 'placeholder' => "Email"]) !!}
         </label>
 
         <label>
@@ -29,6 +28,16 @@
 
         {!! Form::submit('Login') !!}
 
+        <p>Or</p>
+
+        <a href="{{ route('user.register') }}" class="register-link">Register</a>
+        <br>
+
+        @if(session('error'))
+        <div class="error-message">
+            {{ session('error') }}
+        </div>
+        @endif
         {!! Form::close() !!}
     </section>
 

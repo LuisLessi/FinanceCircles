@@ -29,13 +29,22 @@ Route::get('/register', [Controller::class, 'register']);
 Route::get('/login', [Controller::class, 'login']);
 Route::post('/login', [DashboardController::class, 'auth'])->name('user.login');
 
+Route::get('/register', [Controller::class, 'register']);
+Route::post('/register', [DashboardController::class, 'registerUser'])->name('user.register');
+
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 Route::get('user', [UsersController::class, 'index'])->name('user.index');
 Route::get('institution', [InstitutionsController::class, 'index'])->name('institution.index');
 Route::get('group', [GroupsController::class, 'index'])->name('group.index');
 
+Route::get('user/moviment', [MovimentsController::class, 'index'])->name('moviment.index');
 Route::get('moviment', [MovimentsController::class, 'application'])->name('moviment.application');
 Route::post('moviment', [MovimentsController::class, 'storeApplication'])->name('moviment.application.store');
+Route::get('moviment/all', [MovimentsController::class, 'all'])->name('moviment.all');
+
+Route::get('getback', [MovimentsController::class, 'getback'])->name('moviment.getback');
+Route::post('getback', [MovimentsController::class, 'storeGetBack'])->name('moviment.getback.store');
 
 
 Route::resource('user', UsersController::class);

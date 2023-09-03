@@ -25,9 +25,21 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('moviment.getback') }}">
+            <i class="fa fa-arrow-up"></i>
+                <h3>Rescue</h3>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('moviment.index') }}">
                 <i class="fa fa-dollar"></i>
                 <h3>Applications</h3>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('moviment.all') }}">
+            <i class="fa fa-history"></i>
+                <h3>Extract</h3>
             </a>
         </li>
     </ul>

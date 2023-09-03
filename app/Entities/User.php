@@ -55,6 +55,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Group::class, 'user_groups');
     }
 
+    public function moviments()
+    {
+        return $this->hasMany(Moviment::class);
+    }
 
     public function setPasswordAttribute($value)
     {

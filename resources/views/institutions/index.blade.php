@@ -23,9 +23,9 @@
 <table class="default-table">
     <thead>
         <tr>
-            <td>#</td>
-            <td>Institution name</td>
-            <td>Options</td>
+            <th>#</th>
+            <th>Institution name</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody class="options-cell">
