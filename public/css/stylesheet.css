@@ -103,7 +103,9 @@ section#conteudo-view form input[type="submit"] {
     text-decoration: none; 
 }
 
-
+.tittle-register{
+    margin-bottom: -65px;
+}
 
 /**
     * Stylesheet to menu lateral
@@ -286,14 +288,24 @@ form.form-padrao label.submit input{
 }
 
 .error-message{
-    background-color: #ff5656; /* Cor de fundo vermelha */
-    color: #fff; /* Cor do texto branco */
-    padding: 10px; /* Espaçamento interno */
-    border-radius: 5px; /* Cantos arredondados */
-    margin-top: 10px; /* Espaço superior */
-    text-align: center; /* Centraliza o texto horizontalmente */
-    font-weight: bold; /* Texto em negrito */
-    font-size: 1.2em; /* Tamanho da fonte */
+    background-color: #ff5656; 
+    color: #fff;
+    padding: 10px; 
+    border-radius: 5px;
+    margin-top: 10px; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 1.2em;
+}
+
+.error-message-register{
+    background-color: #ff5656; 
+    color: #fff;
+    padding: 10px; 
+    border-radius: 5px;
+    margin-top: -17px; 
+    text-align: center; 
+    font-weight: bold; 
 }
 
 .inline-form {

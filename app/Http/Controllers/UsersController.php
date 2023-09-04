@@ -61,6 +61,8 @@ class UsersController extends Controller
             'messages' => $request['messages']
         ]);
 
+        dd($user);
+
         $users = $this->repository->all(); 
         return view('user.index', ['users' => $users, 'user' => $user]);
     }

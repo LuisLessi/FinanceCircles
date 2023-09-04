@@ -71,9 +71,13 @@ class DashboardController extends Controller
         ]);
 
         $users = $this->repository->all();
-        dd($users); 
+
+        if ($request['success']) {
         return view('user.login', ['users' => $users, 'user' => $user]);
+    } else {
+        session()->flash('error', 'Error registering, please try again');
+        return view('user.register', ['users' => $users, 'user' => $user]);
     }
-    
+}
 
 }

@@ -13,35 +13,43 @@
 
     <section id="conteudo-view" class="register">
 
+        @if(session('error'))
+        <div class="error-message-register">
+            {{ session('error') }}
+        </div>
+        @endif
+
         <h1>FinanceCircles</h1>
-        <h3>Your team's finance manager</h3>
+        <h3 class="tittle-register">Your team's finance manager</h3>
 
         {!! Form::open(['route' => 'user.register', 'method' => 'post']) !!}
 
         <label>
-            {!! Form::text('username', null, ['class' => 'input', 'placeholder' => "Email"]) !!}
+            {!! Form::text('name', null, ['class' => 'input', 'placeholder' => "Name: User"]) !!}
         </label>
 
         <label>
-            {!! Form::text('cpf', null, ['class' => 'input', 'placeholder' => "CPF"]) !!}
+            {!! Form::text('email', null, ['class' => 'input', 'placeholder' => "Email: email@email.com"]) !!}
         </label>
 
         <label>
-            {!! Form::text('name', null, ['class' => 'input', 'placeholder' => "Name"]) !!}
+            {!! Form::text('cpf', null, ['class' => 'input', 'placeholder' => "CPF: 12345678999"]) !!}
         </label>
 
         <label>
-            {!! Form::text('name', null, ['class' => 'input', 'placeholder' => "Phone"]) !!}
+            {!! Form::text('phone', null, ['class' => 'input', 'placeholder' => "Phone: 00111112222"]) !!}
         </label>
 
         <label>
-            {!! Form::password('password', ['placeholder' => "Password"]) !!}
+            {!! Form::password('password', ['placeholder' => "Password: ***********"]) !!}
         </label>
 
         {!! Form::submit('Register') !!}
 
         {!! Form::close() !!}
+
     </section>
+
 
 </body>
 
